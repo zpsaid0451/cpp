@@ -11,7 +11,7 @@ double calcAverage(int arr[], int size);
 
 int main () {
    // declare and initialize array with a size of 5
-   int balance[5] = {50, 60, 70, 65, 53};
+   int numsArray[100] = {50, 60, 70, 65, 53};
    double avg;//declare (notice it is NOT initialized) variable
 			  //to hold calculated average
 
