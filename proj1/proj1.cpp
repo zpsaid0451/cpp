@@ -14,21 +14,21 @@ int findIndex(string hashTag);
 void displayHashtag();
 
  string hashtagFile;
-    string parseFile;
-    ifstream myHashtagFile;
-    ifstream myParseFile;
-    string hashtag;
-    string parse;
-    string hashTag;
-    string countMessage;
-    string answer;
-    int hashtagSize = 0;
-    int parseSize =0;
-    int index;
-    const int NUM_HASHTAG = 20;
-    string hashtagData[NUM_HASHTAG];
-    string messageData[NUM_HASHTAG];
-    int countHashtagArr[NUM_HASHTAG];
+string parseFile;
+ifstream myHashtagFile;
+ifstream myParseFile;
+string hashtag;
+string parse;
+string hashTag;
+string countMessage;
+string answer;
+int hashtagSize = 0;
+int parseSize =0;
+const int NUM_HASHTAG = 20;
+string hashtagData[NUM_HASHTAG];
+string messageData[NUM_HASHTAG];
+int countHashtagArr[NUM_HASHTAG];
+
 int main () {
     // string fName; //Declaration of a string
     // string lName; //Declaration of a string
@@ -61,79 +61,47 @@ int main () {
 	// cin >> parseFile; //console input
     while (getline(myHashtagFile, hashtag)){
         hashtagData[hashtagSize] = hashtag;
-
         hashtagSize++;
-        
-                // cout << hashtagSize << "\t"<< hashtag << endl;  
     }
     cout << hashtagSize << " hashtags loaded." << endl;
-   
     };
    
     // countHashTag(countHashtagArr, NUM_HASHTAG);
 
-    for (int i = 0; i < NUM_HASHTAG; ++i) //loops for each NUM_NUMBERS
-        {
-           countHashtagArr[i] = 0;
-            // 
-        
-        }
-    for (int i = 0; i < hashtagSize; ++i) //loops for each NUM_NUMBERS
-    {
-    cout << countHashtagArr[i] << " ";
-    // 
+    for (int i = 0; i < NUM_HASHTAG; ++i){
+        countHashtagArr[i] = 0;    
+    }
 
+    for (int i = 0; i < hashtagSize; ++i){ //loops for each NUM_NUMBERS
+        cout << countHashtagArr[i] << " ";
+    // 
     }
 
     string hashtagArray[hashtagSize];
     int count[hashtagSize];
  
-     if (myParseFile.is_open()) {
+    if (myParseFile.is_open()) {
         cout << "Your file was imported!\n" << endl;
         cout << "Messages with matching hashtags\n";
-    while (getline(myParseFile, hashTag)){
-        getline(myParseFile, parse);
         
-        // for (int i = 0; i < 5; i++) {
-
-        // }
-        // char firstParse = parse[0];
-        // if (firstParse == '#'){
+        int countMatch =0;
+        while (getline(myParseFile, hashTag)){
+            getline(myParseFile, parse);
             parseSize++;
-         
-        // }
-        
-        // countMessage = to_string(parseSize)+ ". " + hashTag  + " " + parse + "\n";
-        // cout << countMessage << endl;
 
-        index = findIndex(hashTag);
-        string message;
-         int countMatch =0;
-        if (index < 21){
-           
-            countHashtagArr[index] +=1;
-            countMatch +=1;
-            message = to_string(countMatch) + ". " + hashTag  + " " + parse + "\n";
-            cout << message << " \n";
+            int index = findIndex(hashTag);
+        // string message;
+            if (index < 21){
             
+                countHashtagArr[index] +=1;
+                countMatch +=1;
+                string message = to_string(countMatch) + ". " + hashTag  + " " + parse + "\n";
+                cout << message << " \n";
+                
+            }
         }
-        //   for (int i = 0; i < countMatch; ++i){ //loops for each hashtag
-
-        //     cout << messageData[i] << " \n";
-        //     }
-
-        // addHashtag(index);
-        
-  
-    }
     displayHashtag();
-    cout << parseSize << " message loaded." << endl;
-    //  for (int i = 0; i < hashtagSize; ++i) //loops for each NUM_NUMBERS
-    // {
-    // cout << countHashtagArr[i] << " ";
-    // // 
-
-    // }
+    cout << parseSize << " message loaded." << endl; 
     }else {
       cout << "This file does not exist."; //If the input file does not exist, notifies user
     }
