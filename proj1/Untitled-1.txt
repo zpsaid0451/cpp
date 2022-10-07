@@ -1,0 +1,9 @@
+
+
+
+emacs rand.cpp
+make rand
+./rand
+
+
+cat rand.cpp
