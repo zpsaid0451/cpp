@@ -55,7 +55,7 @@ void Player:: DisplayStatus(){
 			cout << "Races:  " << m_races << endl;
 			cout << "Wins:   " << m_wins << endl;
 			cout << "Falls:  " << m_falls << endl;
-			cout << "\n  Stats " << endl;
+			cout << "\nStats " << endl;
 			cout << "Speed:  " <<  m_stat[SPEED] << endl;
 			cout << "Agility:   " << m_stat[AGILITY] << endl;
 			cout << "Jump:  " << m_stat[JUMP] << endl;
@@ -67,32 +67,32 @@ void Player:: DisplayStatus(){
 // Precondition - Called after winning a race
 // Postconditions - Increases one stat by one point (max 10)
 void Player:: IncreaseStat(){
-
+    int choiceStat;
     cout << "Which stat would you like to increase?" << endl;
     cout << "1. Speed" << endl;
     cout << "2. Agility" << endl;
     cout << "3. Jump"<< endl;
-    cin >> choice;
+    cin >> choiceStat;
 
     //check for validation
-    if (choice < 1 || choice > 3) {
-        while (choice < 1 || choice > 3) {
+    if (choiceStat < 1 || choiceStat> 3) {
+        while (choiceStat < 1 || choiceStat > 3) {
           cout << "Which stat would you like to increase?" << endl;
           cout << "1. Speed" << endl;
           cout << "2. Agility" << endl;
           cout << "3. Jump"<< endl;
-          cin >> choice;
+          cin >> choiceStat;
         }
     }
-    if (choice == 1){
+    if (choiceStat == 1){
         m_stat[SPEED] +=1;
     }
 
-    if (choice == 2){
+    if (choiceStat == 2){
         m_stat[AGILITY] ++;
     }
 
-    if (choice == 3){
+    if (choiceStat == 3){
         m_stat[JUMP]++;
     }
      
@@ -113,6 +113,6 @@ int Player:: GetStat(int stat){
 // Precondition - None
 // Postconditions - Increases the number of wins by 1
 
-void IncreaseWins(){
-  m_wins ++;
+void Player::IncreaseWins(){
+  m_wins++;
 }

@@ -1,6 +1,6 @@
 #include "Track.h"
 #include <cstdlib>
-
+const int NO_WON = 5;
 // Name: Track() - Default Constructor
 // Desc: Used to build a new Track with default length 4
 // Sets track so that all players start in position 0
@@ -9,10 +9,7 @@
 Track::Track() {
 	m_length = 4;
 	ResetLocation();
-	// m_track[0] = 0;
-	// m_track[1] = 0;
-	// m_track[2] = 0;
-	// m_track[3] = 0;
+
 
 }
 
@@ -25,8 +22,8 @@ void Track::SetLength(int length){m_length = length;}
 // Preconditions - Track exists
 // Postconditions - Populates m_obstacle with random number between 0 and 2
 void Track:: PopulateObstacles(){
-	for (int i = 0; i < MAX_LENGTH; ++i){ //loops for each NUM_NUMBERS
-        m_obstacle[i] = rand % 3;
+	for (int i = 0; i < m_length; ++i){ //loops for each NUM_NUMBERS
+        m_obstacle[i] = rand() % 3;
     // 
     }
 
@@ -40,7 +37,7 @@ void Track:: GetStatus(){
 
 	for (int player = 0; player < NUM_RACERS; player++){ 
 		string obstacleName = ConvertObstacle(player);
-		if (player = 0){
+		if (player == 0){
 			cout << "You are on a " << obstacleName << " in (obstacle " << m_track[player] << " of " << m_length <<" )"<< endl;
 		} else {
 			cout << "Player " << player+1 << "is on a " << obstacleName << " in (obstacle " << m_track[player] << " of " << m_length <<" )" << endl;
@@ -57,12 +54,12 @@ void Track:: GetStatus(){
 // Postconditions - Returns integer location of winner (0 is human). Always returns human in case of tie!
 int Track:: CheckWin(){
 	for (int i = 0; i < NUM_RACERS; i++){
-		if (m_track[i] == m_length){
-			return 
+		if (m_track[i] >= m_length){
+			return i;
+		}else {
+			return NO_WON;
 		}
-
-
-	
+	}
 }
 
  // Name: GetObstacle
@@ -104,6 +101,6 @@ void Track::ResetLocation(){
 // Postconditions - Pulls the location from m_track for a provided player
 //                  then returns the obstacle at that location
 string Track::ConvertObstacle(int player){
-	int location = m_track[player]
+	int location = m_track[player];
     return OBSTACLE_TYPE[GetObstacle(location)];
 }
