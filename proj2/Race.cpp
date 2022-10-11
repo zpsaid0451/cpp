@@ -34,18 +34,19 @@ void Race:: StartRace(){
     m_track.PopulateObstacles();
     
     cout << "How long would you like the race?" << endl;
-  
     cin >> totalRace;
-    if (totalRace < 1 || totalRace > MAX_LENGTH) {
-        while (totalRace < 1 || totalRace > MAX_LENGTH) {
-            cout << "How long would you like the race?" << endl;
-            cin >> totalRace;
-        }
+    
+    while (totalRace < 1 || totalRace > MAX_LENGTH) {
+        cout << "How long would you like the race?" << endl;
+        cin >> totalRace;
     }
     int playerWon = m_track.CheckWin();
-    while (playerWon == 4){
+    while (playerWon != 0 || playerWon != 1 || playerWon != 2 || playerWon !=3){
         int raceOptionsNum = RaceOptions();
+        //testing
+        cout << "raceOptionNumber: " << raceOptionsNum << endl;
         if (raceOptionsNum == 1){
+            cout << "inside race option" << endl;
             m_track.GetStatus();
 
         }
@@ -55,6 +56,7 @@ void Race:: StartRace(){
             
             ProgressRace(raceOptionsNum);
             m_track.GetStatus();
+            cout << "after get status" << endl;
            
 
         }
@@ -142,10 +144,12 @@ void Race::ProgressRace(int stat){
     //count falls or success
     if (myPlayerNum >= obstacleDifficulty){
         m_track.IncrementLocation(0);
+        cout << "You " << "made it through the " << m_track.ConvertObstacle(0) << " obstacle!" << endl;
     }else {
         int currentFalls = m_myPlayer.GetFalls();
         currentFalls = currentFalls + 1;
         m_myPlayer.SetFalls(currentFalls);
+        cout << "You fell!" << endl;
     }
     ProgressComputer(obstacleDifficulty);
 
@@ -186,7 +190,7 @@ bool Race::MainMenu(){
         cout <<"Thanks for playing UMBC Race!" << endl;
         return false;      
     }
-
+    return true;
 
 }
 
@@ -200,6 +204,8 @@ int Race:: RaceOptions(){
     cout << "What would you like to do?" << endl;
     cout << "1. Get Race Status\n2. Try to Sprint (Speed)\n3. Try to Dodge (Agility)\n4. Try to Jump (Jump)" << endl;
     cin >> choiceToDo;
+    // testing
+    cout << "choice to do :" << choiceToDo << endl;
     return choiceToDo;
             
 }
@@ -216,8 +222,7 @@ void Race:: ManageGame(){
     RaceTitle();
     GetRacerInfo();
     bool userChoice;
-    do {
-        
+    do {      
         userChoice = MainMenu();
     }while(userChoice);
 }
@@ -236,6 +241,10 @@ void Race:: ProgressComputer(int obstacleDifficulty){
         int botsObstacleDifficulty = (rand() % (COMP_MAX + 1 - COMP_MIN)) + COMP_MIN;
         if (botsObstacleDifficulty >= obstacleDifficulty){
             m_track.IncrementLocation(i);
+            cout << "Player " << i << " made it through the " << m_track.ConvertObstacle(i) << " obstacle!" << endl;
+        }else {
+            // computer player fall
+            cout << "Player "<< i <<" fell!" << endl;
         }
     }
 }
