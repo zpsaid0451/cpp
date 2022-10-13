@@ -22,7 +22,7 @@ void Track::SetLength(int length){m_length = length;}
 // Preconditions - Track exists
 // Postconditions - Populates m_obstacle with random number between 0 and 2
 void Track:: PopulateObstacles(){
-	for (int i = 0; i < m_length; ++i){ //loops for each NUM_NUMBERS
+	for (int i = 0; i < m_length; i++){ 
         m_obstacle[i] = rand() % 3;
     // 
     }
@@ -34,17 +34,17 @@ void Track:: PopulateObstacles(){
 // Preconditions - Track exists
 // Postconditions - Outputs where each racer is in track and the type of obstacle
 void Track:: GetStatus(){
-	cout << "testing" << NUM_RACERS<< endl;
 	for (int player = 0; player < NUM_RACERS; player++){ 
 		string obstacleName = ConvertObstacle(player);
 		if (player == 0){
-			cout << "You are on a " << obstacleName << " in (obstacle " << m_track[player] << " of " << m_length <<" )"<< endl;
+			cout << "You are on a " << obstacleName << " obstacle in (obstacle " << m_track[player]+1 << " of " << m_length <<" )"<< endl;
 		} else {
-			cout << "Player " << player+1 << "is on a " << obstacleName << " in (obstacle " << m_track[player] << " of " << m_length <<" )" << endl;
+			cout << "Player " << player << " is on a " << obstacleName << " obstacle in (obstacle " << m_track[player]+1 << " of " << m_length <<" )" << endl;
 		}
         
     }
 }
+//OBSTACLE_TYPE[m_obstacle[player]]
 
 // Name: CheckWin()
 // Desc - Checks to see if the race is over by comparing each racer's
@@ -56,8 +56,6 @@ int Track:: CheckWin(){
 	for (int i = 0; i < NUM_RACERS; i++){
 		if (m_track[i] >= m_length){
 			return i;
-		}else {
-			return NO_WON;
 		}
 	}
 	return -1;
@@ -79,7 +77,7 @@ int Track::GetObstacle(int location){
 // Preconditions - Race starts with everyone having a 0
 // Postconditions - Increases the integer value for a specific player
 void Track:: IncrementLocation(int player){
-	if (m_track[player] < m_length){
+	if (m_track[player] <= m_length){
 		m_track[player] ++;
 	} 
 }

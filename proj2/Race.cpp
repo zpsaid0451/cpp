@@ -1,8 +1,5 @@
 #include "Race.h"
 #include <cstdlib>
-// string racerName;
-
-// int choiceToDo;
 
 Race::Race() {
  
@@ -19,20 +16,16 @@ Race::Race() {
 // Preconditions - Race conditions set up
 // Postconditions - Race completed
 void Race:: StartRace(){
-      
+    cout << " hello " <<endl;  
     int totalRace;
     // 1. Resets length of race - 
-    m_track.SetLength(0);
+    m_track.ResetLocation();
 
     // 2. Increments the number of races for the player
     int currentRace = m_myPlayer.GetRaces();
     currentRace = currentRace + 1;
     m_myPlayer.SetRaces(currentRace);
 
-    // 3. Sets up track (user chooses length of track) and populates obstacles
-    //populate obstacles
-    m_track.PopulateObstacles();
-    
     cout << "How long would you like the race?" << endl;
     cin >> totalRace;
     
@@ -40,63 +33,50 @@ void Race:: StartRace(){
         cout << "How long would you like the race?" << endl;
         cin >> totalRace;
     }
-    int playerWon = m_track.CheckWin();
-    while (playerWon != 0 || playerWon != 1 || playerWon != 2 || playerWon !=3){
-        int raceOptionsNum = RaceOptions();
-        //testing
-        cout << "raceOptionNumber: " << raceOptionsNum << endl;
-        if (raceOptionsNum == 1){
-            cout << "inside race option" << endl;
-            m_track.GetStatus();
+    m_track.SetLength(totalRace);
+    m_track.PopulateObstacles();
 
+    int playerWon = m_track.CheckWin();
+    // while (playerWon != 0 || playerWon != 1 || playerWon != 2 || playerWon !=3){
+    while ( m_track.CheckWin() == -1){
+        int raceOptionsNum = RaceOptions();
+       
+        if (raceOptionsNum == 1){
+            m_track.GetStatus();
         }
         if (raceOptionsNum == 2){
             cout << "You are trying to progress the race!" << endl;
-            //in track.cpp
-            
+            cout << "RaceOptions 2" << endl;
             ProgressRace(raceOptionsNum);
-            m_track.GetStatus();
-            cout << "after get status" << endl;
-           
-
+    
         }
         if (raceOptionsNum == 3){
             cout << "You are trying to progress the race!" << endl;
             ProgressRace(raceOptionsNum);
-            m_track.GetStatus();
             
 
         }
         if (raceOptionsNum == 4){
             cout << "You are trying to progress the race!" << endl;
             ProgressRace(raceOptionsNum);
-            m_track.GetStatus();
 
         }
+        cout << "inside:" <<endl;
         playerWon = m_track.CheckWin();
+
     }
     
-
+    cout << "playwon:" << playerWon << endl;
     // 5. Checks to see if someone won (their location exceeds the length of the race)
     //check if track have a winner
+    if (m_track.CheckWin() == 0){
+        cout << "You won the race!"<< endl;
+         m_myPlayer.IncreaseStat();
+         m_myPlayer.IncreaseWins();
+    }else {
+        cout << "Player " << m_track.CheckWin() << " won the race!"<< endl;
+    } 
 
-    switch(playerWon)
-    {
-        case 0:
-            cout << "You won the race!"<< endl;
-            m_myPlayer.IncreaseStat();
-            m_myPlayer.IncreaseWins();
-            break;
-        case 1:
-            cout << "Play 1 won the race!"<< endl;
-            break;
-        case 2:
-            cout << "Play 2 won the race!"<< endl;
-            break;
-        case 3:
-            cout << "Play 3 won the race!"<< endl;
-            break;
-    }
     
 }
 
@@ -124,34 +104,42 @@ void Race::GetRacerInfo(){
 // Preconditions - Player in race
 // Postconditions - Each racer either progresses to the next obstacle, or falls
 void Race::ProgressRace(int stat){
+    cout << "inside progress race function" << endl;
     int action = stat - 2;
-    int obstacleDifficulty = (rand() % (COMP_MAX + 1 - COMP_MIN)) + COMP_MIN;
-    int myPlayerNum; 
-    switch(action)
-    {
-        case 0:
-            myPlayerNum = BASE_SKILL + (5 * m_myPlayer.GetSpeed());
-            break;
-        case 1:
-            myPlayerNum = BASE_SKILL + (5 * m_myPlayer.GetAgility());
-            break;
-        case 2:
-            myPlayerNum = BASE_SKILL + (5 * m_myPlayer.GetJump());
-            break;
-      
+    // int obstacleDifficulty = (rand() % (COMP_MAX + 1 - COMP_MIN)) + COMP_MIN;
+    int obstacleDifficulty = (rand() % BASE_DIFFICULTY + 1);
+    int myPlayerNum;
+    if (action == 0 and "speed" == m_track.ConvertObstacle(0)){
+         myPlayerNum =  BASE_SKILL +  5 * m_myPlayer.GetSpeed();
     }
+    else if (action == 1 and "agility" == m_track.ConvertObstacle(0)){
+        myPlayerNum =  BASE_SKILL +  5 * m_myPlayer.GetAgility();
+    }
+    else if (action == 2 and "jump" == m_track.ConvertObstacle(0)){
+        myPlayerNum =  BASE_SKILL +  5 * m_myPlayer.GetJump();
+    } else {
+        myPlayerNum = BASE_SKILL;
+    }
+    cout << "playerNum:" << myPlayerNum << endl;
+    //play action match obstacle
+
+    //does not match 
+    //only base skill
+
     // what if compares the BASE_SKILL + (5 * stat) to the obstacle difficulty =
     //count falls or success
-    if (myPlayerNum >= obstacleDifficulty){
-        m_track.IncrementLocation(0);
+    if (myPlayerNum > obstacleDifficulty){
         cout << "You " << "made it through the " << m_track.ConvertObstacle(0) << " obstacle!" << endl;
-    }else {
+        m_track.IncrementLocation(0);
+    }else { 
+        cout << "You fell!" << endl;
         int currentFalls = m_myPlayer.GetFalls();
         currentFalls = currentFalls + 1;
         m_myPlayer.SetFalls(currentFalls);
-        cout << "You fell!" << endl;
+       
     }
     ProgressComputer(obstacleDifficulty);
+     cout << "end progress race function" << endl;
 
 }
 
@@ -204,8 +192,6 @@ int Race:: RaceOptions(){
     cout << "What would you like to do?" << endl;
     cout << "1. Get Race Status\n2. Try to Sprint (Speed)\n3. Try to Dodge (Agility)\n4. Try to Jump (Jump)" << endl;
     cin >> choiceToDo;
-    // testing
-    cout << "choice to do :" << choiceToDo << endl;
     return choiceToDo;
             
 }
@@ -238,10 +224,10 @@ void Race:: ManageGame(){
 //         location or fall and remain on the same obstacle
 void Race:: ProgressComputer(int obstacleDifficulty){
      for (int i = 1; i < NUM_RACERS; i++){ 
-        int botsObstacleDifficulty = (rand() % (COMP_MAX + 1 - COMP_MIN)) + COMP_MIN;
-        if (botsObstacleDifficulty >= obstacleDifficulty){
-            m_track.IncrementLocation(i);
+        int botsObstacleDifficulty = (rand() % (COMP_MAX - COMP_MIN)) + COMP_MIN;
+        if (botsObstacleDifficulty > obstacleDifficulty){
             cout << "Player " << i << " made it through the " << m_track.ConvertObstacle(i) << " obstacle!" << endl;
+            m_track.IncrementLocation(i);
         }else {
             // computer player fall
             cout << "Player "<< i <<" fell!" << endl;
