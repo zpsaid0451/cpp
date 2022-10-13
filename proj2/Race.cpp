@@ -1,10 +1,8 @@
 #include "Race.h"
 #include <cstdlib>
 
-Race::Race() {
- 
+Race::Race() { 
 }
-
 
 // Name: StartRace()
 // 1. Resets length of race
@@ -16,12 +14,8 @@ Race::Race() {
 // Preconditions - Race conditions set up
 // Postconditions - Race completed
 void Race:: StartRace(){
-    cout << " hello " <<endl;  
     int totalRace;
-    // 1. Resets length of race - 
     m_track.ResetLocation();
-
-    // 2. Increments the number of races for the player
     int currentRace = m_myPlayer.GetRaces();
     currentRace = currentRace + 1;
     m_myPlayer.SetRaces(currentRace);
@@ -37,7 +31,6 @@ void Race:: StartRace(){
     m_track.PopulateObstacles();
 
     int playerWon = m_track.CheckWin();
-    // while (playerWon != 0 || playerWon != 1 || playerWon != 2 || playerWon !=3){
     while ( m_track.CheckWin() == -1){
         int raceOptionsNum = RaceOptions();
        
@@ -46,7 +39,6 @@ void Race:: StartRace(){
         }
         if (raceOptionsNum == 2){
             cout << "You are trying to progress the race!" << endl;
-            cout << "RaceOptions 2" << endl;
             ProgressRace(raceOptionsNum);
     
         }
@@ -65,10 +57,7 @@ void Race:: StartRace(){
         playerWon = m_track.CheckWin();
 
     }
-    
-    cout << "playwon:" << playerWon << endl;
-    // 5. Checks to see if someone won (their location exceeds the length of the race)
-    //check if track have a winner
+ 
     if (m_track.CheckWin() == 0){
         cout << "You won the race!"<< endl;
          m_myPlayer.IncreaseStat();
@@ -76,8 +65,7 @@ void Race:: StartRace(){
     }else {
         cout << "Player " << m_track.CheckWin() << " won the race!"<< endl;
     } 
-
-    
+ 
 }
 
 // Name: GetRacerInfo()
@@ -121,13 +109,6 @@ void Race::ProgressRace(int stat){
         myPlayerNum = BASE_SKILL;
     }
     cout << "playerNum:" << myPlayerNum << endl;
-    //play action match obstacle
-
-    //does not match 
-    //only base skill
-
-    // what if compares the BASE_SKILL + (5 * stat) to the obstacle difficulty =
-    //count falls or success
     if (myPlayerNum > obstacleDifficulty){
         cout << "You " << "made it through the " << m_track.ConvertObstacle(0) << " obstacle!" << endl;
         m_track.IncrementLocation(0);
@@ -167,9 +148,7 @@ bool Race::MainMenu(){
        StartRace();
         return true;
     }
-
     if (choice == 2){
-
         m_myPlayer.DisplayStatus();
         return true;
         
@@ -179,7 +158,6 @@ bool Race::MainMenu(){
         return false;      
     }
     return true;
-
 }
 
 
@@ -229,7 +207,6 @@ void Race:: ProgressComputer(int obstacleDifficulty){
             cout << "Player " << i << " made it through the " << m_track.ConvertObstacle(i) << " obstacle!" << endl;
             m_track.IncrementLocation(i);
         }else {
-            // computer player fall
             cout << "Player "<< i <<" fell!" << endl;
         }
     }

@@ -1,6 +1,6 @@
 #include "Player.h"
 
-const int SPEED = 0; //Starting value of all stats
+const int SPEED = 0; 
 const int AGILITY = 1;
 const int JUMP= 2;
 
@@ -50,7 +50,6 @@ void Player::SetFalls(int falls){m_falls = falls;}
   // Precondition - None
   // Postconditions - Displays the player information
 void Player:: DisplayStatus(){
-
   cout << "*****The Mighty Racer "<< m_name << " **********" << endl;
 			cout << "Races:  " << m_races << endl;
 			cout << "Wins:   " << m_wins << endl;

@@ -24,7 +24,6 @@ void Track::SetLength(int length){m_length = length;}
 void Track:: PopulateObstacles(){
 	for (int i = 0; i < m_length; i++){ 
         m_obstacle[i] = rand() % 3;
-    // 
     }
 
 }
@@ -58,7 +57,7 @@ int Track:: CheckWin(){
 			return i;
 		}
 	}
-	return -1;
+	return NO_WON;
 }
 
  // Name: GetObstacle
