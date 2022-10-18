@@ -1,6 +1,6 @@
 #include "Track.h"
 #include <cstdlib>
-const int NO_WON = -1;
+
 // Name: Track() - Default Constructor
 // Desc: Used to build a new Track with default length 4
 // Sets track so that all players start in position 0
@@ -57,7 +57,7 @@ int Track:: CheckWin(){
 			return i;
 		}
 	}
-	return NO_WON;
+	return -1;
 }
 
  // Name: GetObstacle
