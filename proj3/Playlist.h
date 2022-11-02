@@ -49,11 +49,9 @@ public:
   //       "Plays" a song by removing it from the playlist at a specific location
   // Recommendations - Code this function last (dead last)
   // Preconditions - Playlist has been populated
-// Hint: Do not forget about removing from the front, middle, or end of the l\
-ist
+// Hint: Do not forget about removing from the front, middle, or end of the list
   //       Could also remove the only node
-  // Postconditions - Playlist is reduced in size by one based on which song is\
- played
+  // Postconditions - Playlist is reduced in size by one based on which song is played
   void PlayAt(int location);
 private:
   Song* m_head; //Head of the playlist

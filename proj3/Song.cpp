@@ -10,6 +10,11 @@
   //Precondition: None
   //Postcondition: Creates a default song using "New Title", "New Artist", 0 , 0 and sets m_next = nullptr;
   Song::Song(){
+    m_title = "New Title";
+    m_artist = "New Artist";
+    m_year = 0;
+    m_rank = 0;
+    m_next = nullptr;
 
   }
 
@@ -17,7 +22,11 @@
   //Precondition: Requires title, artist, year, and rank
   //Postcondition: Creates a song based on passed parameters and sets m_next = nullptr;
   Song::Song(string title, string artist, int year, int rank ){
-
+    m_title = title;
+    m_artist = artist;
+    m_year = year;
+    m_rank = rank;
+    m_next = nullptr;
   }
 
   //Name: Mutators and Accessors
@@ -30,8 +39,8 @@
   int Song::GetRank(){return m_rank;} // return rank (1-100 from that year)
   void Song::SetTitle(string title){m_title = title;} // sets title
   void Song::SetArtist(string artist){m_artist = artist;} //sets artist
-  void Song::SetYear(int year){return m_year =year;} //sets year
-  void Song::SetRank(int rank){return m_rank =rank;} //sets rank
+  void Song::SetYear(int year){ m_year =year;} //sets year
+  void Song::SetRank(int rank){m_rank =rank;} //sets rank
 
   // Linked List specific getters and setters
   // Name: GetNext()
@@ -39,7 +48,7 @@
    // Preconditions: None (may return either song or nullptr)
   // Postconditions: Returns m_next;
   Song* Song::GetNext(){
-
+    return m_next;
   }
 
 
@@ -48,6 +57,6 @@
   // Desc: Updates the pointer to a new target (either a song or nullptr)
   // Preconditions: None
   // Postconditions: Sets the next song
-  void Song::SetNext(Song*){
-	
+  void Song::SetNext(Song* next){
+     m_next = next;
   }

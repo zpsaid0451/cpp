@@ -22,8 +22,7 @@ class Song{
   Song();
   //Name: Song - Overloaded Constructor
   //Precondition: Requires title, artist, year, and rank
-  //Postcondition: Creates a song based on passed parameters and sets m_next = \
-nullptr;
+  //Postcondition: Creates a song based on passed parameters and sets m_next = nullptr;
   Song(string title, string artist, int year, int rank );
   //Name: Mutators and Accessors
   //May or may not be used specifically but implement all
@@ -52,8 +51,7 @@ nullptr;
   // Name: operator<<
   // Desc: Overloaded << operator to return ostream from a Song
 // Preconditions: Requires a populated song
-  // Postconditions: Returns ostream populated with Song's name, artist, year, \
-and rank
+  // Postconditions: Returns ostream populated with Song's name, artist, year, and rank
   // **PROVIDED** Do not edit
   friend ostream &operator<< (ostream &output, Song &mySong){
     output << "\"" << mySong.m_title << "\" by " << mySong.m_artist << " "

@@ -76,10 +76,8 @@ Rock That Body|The Black Eyed Peas|2010|75
 Secrets|OneRepublic|2010|76
 Naturally|Selena Gomez & the Scene|2010|77
 Un-Thinkable (I'm Ready)|Alicia Keys|2010|78
-All I Do Is Win|DJ Khaled featuring T-Pain, Ludacris, Snoop Dogg and Rick Ross|\
-2010|79
-I Made It (Cash Money Heroes)|Kevin Rudolf featuring Birdman, Jay Sean and Lil \
-Wayne|2010|80
+All I Do Is Win|DJ Khaled featuring T-Pain, Ludacris, Snoop Dogg and Rick Ross|2010|79
+I Made It (Cash Money Heroes)|Kevin Rudolf featuring Birdman, Jay Sean and Lil Wayne|2010|80
 Stuck Like Glue|Sugarland|2010|81
 Hey Daddy (Daddy's Home)|Usher featuring Plies|2010|82
 There Goes My Baby|Usher|2010|83
@@ -582,8 +580,7 @@ Bang Bang|Jessie J, Ariana Grande and Nicki Minaj|2015|80
 Lay Me Down|Sam Smith|2015|81
 Tuesday|ILoveMakonnen featuring Drake|2015|82
 Hit the Quan|iLoveMemphis|2015|83
-Downtown|Macklemore & Ryan Lewis featuring Eric Nally, Melle Mel, Kool Moe Dee and Grandmast\
-er Caz|2015|84
+Downtown|Macklemore & Ryan Lewis featuring Eric Nally, Melle Mel, Kool Moe Dee and Grandmaster Caz|2015|84
 House Party|Sam Hunt|2015|85
 Ayo|Chris Brown and Tyga|2015|86
 Kick the Dust Up|Luke Bryan|2015|87
@@ -666,8 +663,7 @@ Die a Happy Man|Thomas Rhett|2016|64
 White Iverson|Post Malone|2016|65
 Close|Nick Jonas featuring Tove Lo|2016|66
 Unsteady|X Ambassadors|2016|67
-Sucker for Pain|Lil Wayne, Wiz Khalifa and Imagine Dragons with Logic and Ty Dolla Sign feat\
-uring X Ambassadors|2016|68
+Sucker for Pain|Lil Wayne, Wiz Khalifa and Imagine Dragons with Logic and Ty Dolla Sign featuring X Ambassadors|2016|68
 Down in the DM|Yo Gotti featuring Nicki Minaj|2016|69
 Luv|Tory Lanez|2016|70
 Sorry|Beyonce|2016|71
@@ -711,8 +707,7 @@ Body Like a Back Road|Sam Hunt|2017|8
 Believer|Imagine Dragons|2017|9
 Congratulations|Post Malone featuring Quavo|2017|10
 Say You Won't Let Go|James Arthur|2017|11
-I'm the One|DJ Khaled featuring Justin Bieber, Quavo, Chance the Rapper and Lil Wayne|2017|1\
-2
+I'm the One|DJ Khaled featuring Justin Bieber, Quavo, Chance the Rapper and Lil Wayne|2017|12
 XO Tour Llif3|Lil Uzi Vert|2017|13
 Mask Off|Future|2017|14
 Unforgettable|French Montana featuring Swae Lee|2017|15
@@ -881,8 +876,7 @@ Eastside|Benny Blanco, Halsey and Khalid|2018|77
 Call Out My Name|The Weeknd|2018|78
 King's Dead|Jay Rock, Kendrick Lamar, Future and James Blake|2018|79
 Happier|Marshmello and Bastille|2018|80
-Te Bote|Nio Garc a, Darell and Casper M gico featuring Bad Bunny, Nicky Jam and Ozuna|2018|8\
-1
+Te Bote|Nio Garc a, Darell and Casper M gico featuring Bad Bunny, Nicky Jam and Ozuna|2018|81
 Simple|Florida Georgia Line|2018|82
 Lemon|N.E.R.D and Rihanna|2018|83
 1-800-273-8255|Logic featuring Alessia Cara and Khalid|2018|84
