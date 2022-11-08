@@ -20,7 +20,10 @@ MusicPlayer::MusicPlayer(){
 //Precondition: None
 //Postcondition: Destructs all songs in the catalog and all songs in the playlist
 	MusicPlayer::~MusicPlayer(){
-
+	for (unsigned int i = 0; i < m_songCatalog.size();i++){
+		delete m_songCatalog[i];
+	}
+	delete m_playList;
 }
 
 
@@ -37,16 +40,14 @@ void MusicPlayer::LoadCatalog(string filename){
 
 	ifstream myMusicFile(filename);
 	if (myMusicFile.is_open()) {
-		cout << "Your file was imported!\n" << endl;
-	while (getline(myMusicFile, title, DELIMITER) && getline(myMusicFile,artist,DELIMITER)){
-		getline(myMusicFile, years, DELIMITER);
-		getline(myMusicFile,rank);
-		cout << "year:" << years << "rank " << rank << endl;
-		int intYear = stoi(years);
-		int intRank = stoi(rank);
-		m_songCatalog.push_back(new Song(title,artist,intYear,intRank));
+		while (getline(myMusicFile, title, DELIMITER) && getline(myMusicFile,artist,DELIMITER)){
+			getline(myMusicFile, years, DELIMITER);
+			getline(myMusicFile,rank);
+			int intYear = stoi(years);
+			int intRank = stoi(rank);
+			m_songCatalog.push_back(new Song(title,artist,intYear,intRank));
 
-	}
+		}
 	cout <<"Songs loaded: " << m_songCatalog.size() << endl;
 	myMusicFile.close();   
 }else{
@@ -61,9 +62,7 @@ void MusicPlayer::LoadCatalog(string filename){
 
 void MusicPlayer::MainMenu(){
 	int choice;
-	int years;
-	int numSong;
-	
+
 		do {      
 			cout << "What would you like to do? " << endl;
 			cout << "1. Display Songs by Year" << endl;
@@ -73,26 +72,29 @@ void MusicPlayer::MainMenu(){
 			cout << "5. Quit"<< endl;
 			cin >> choice;
 
-					//check for validation
+			//check for validation
 			if (choice < 1 || choice > 5) {
 			while (choice < 1 || choice > 5) {
-					cout << "\nInvalid selection. Please re-enter: " << endl;
-					cin >> choice;
+				cout << "What would you like to do? " << endl;
+				cout << "1. Display Songs by Year" << endl;
+				cout << "2. Add Song" << endl;
+				cout << "3. Display Playlist" << endl;
+				cout << "4. Play Song" << endl;
+				cout << "5. Quit"<< endl;
+				cin >> choice;
 			}
 			}
 			if (choice == 1){
-					cout << choice << endl;
-					DisplaySongs();
+				cout << choice << endl;
+				DisplaySongs();
 			}
 
 			if (choice == 2){
-					AddSong();
-					// playlist
+				AddSong();
 			}
 
 			if (choice == 3){
 				cout << "Your Playlist" << endl;
-				// playlist
 				DisplayPlaylist();
 			
 				
@@ -103,7 +105,7 @@ void MusicPlayer::MainMenu(){
 				
 			}
 			if (choice ==5){
-				cout << "goodbye" << endl;
+				cout << "Thank you for using the UMBC Music Player" << endl;
 			}
 		}while(choice != 5);
 }
@@ -155,7 +157,7 @@ void MusicPlayer::AddSong(){
 	int year = m_songCatalog.at(addSongNum-1)->GetYear();
 	int rank = m_songCatalog.at(addSongNum-1)->GetRank();
 	m_playList->AddSong(title,artist,year,rank);
-	cout << "Played: " << *m_playList->GetPlaylistDetails(m_playList->Size() -1) << endl;
+	cout << "Added: " << *m_playList->GetPlaylistDetails(m_playList->Size() -1) << endl;
 
 }
 
@@ -182,18 +184,20 @@ void MusicPlayer::DisplayPlaylist(){
 //               Removes chosen song from playlist after "played"
 void MusicPlayer::PlaySong(){
 	DisplayPlaylist();
+	if (m_playList->Size() == 0) {
+		return;
+	}
 	int choose;
     cout << "Which song would you like to play?" << endl;
 	cin >> choose;
-	while (choose < 0 || choose > m_playList->Size()) {
-	cout << "Which year would you like to like to play?" << endl;
+	while (choose < 1 || choose > m_playList->Size()) {
+	cout << "Which song would you like to play?" << endl;
 	cin >> choose;
 	}
 	cout << "Played:" << *m_playList->GetPlaylistDetails(choose -1) << endl;
-	cout << "before play at" << endl;
-	cout << "testing choose" << choose << endl;
+
 	m_playList->PlayAt(choose -1); 
-	cout << "after play at" << endl;
+
 	//check if num within range can be choose.
 	//from that num, 
 

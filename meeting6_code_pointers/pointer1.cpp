@@ -16,3 +16,5 @@ int main() {
   cout << "&ptrX = " << &ptrX << endl; //Output the address-of ptrX
   return 0;
 }
+
+// https://www.youtube.com/watch?v=MNF0w1ym4dY

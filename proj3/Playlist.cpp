@@ -82,14 +82,8 @@
   //       Could also remove the only node
   // Postconditions - Playlist is reduced in size by one based on which song is played
   void Playlist::PlayAt(int location){
-    // remove node and different conditions
     if ( location > m_size){
       return;
-      // only 1 node, 
-      // deleted first node in the list, need to updated m_head
-      // deleted last node in the list, need to updated m_tail
-      // in the middle, covered.
-
     }
     
     if (m_size == 1){
