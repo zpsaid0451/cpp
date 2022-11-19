@@ -26,8 +26,9 @@
   // Description: Abstract class - cannot directly instantiate this class
   // Preconditions: None
   // Postconditions: Populates variables used in child classes
-  Entity::Entity(string, int){
-
+  Entity::Entity(string name, int health){
+	m_name = name;
+	m_health = health;
   }
 
 
@@ -38,7 +39,8 @@
 //   virtual ~Entity();
 
 Entity::~Entity(){
-
+	m_name = "";
+	m_health = 0;
 }
 
   // Name: GetName()
@@ -46,7 +48,7 @@ Entity::~Entity(){
   // Preconditions: Entity has name
   // Postconditions: None
   string Entity::GetName(){
-	return "getname";
+	  return m_name;
   }
 
 
@@ -55,7 +57,7 @@ Entity::~Entity(){
   // Preconditions: Entity has health
   // Postconditions: None
   int Entity::GetHealth(){
-	return 1;
+    return m_health;
   }
 
 
@@ -63,8 +65,8 @@ Entity::~Entity(){
   // Description: Sets name of entity
   // Preconditions: None
   // Postconditions: Name is set
-  void Entity::SetName(string){
-
+  void Entity::SetName(string name){
+	m_name = name;
   }
 
 
@@ -72,8 +74,8 @@ Entity::~Entity(){
   // Description: Sets health of entity
   // Preconditions: None
   // Postconditions: Health is set
-  void Entity::SetHealth(int){
-
+  void Entity::SetHealth(int health){
+	m_health = health;
   }
 
 

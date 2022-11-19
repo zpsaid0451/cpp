@@ -5,8 +5,9 @@
   // Description: Creates a new Zergling type of zerg
   // Preconditions: None
   // Postconditions: Can create a Zergling
-  Zergling::Zergling(){
-
+  Zergling::Zergling():Zerg(){
+	// m_name = "Zergling";
+	// m_health = 1;
   }
 
 
@@ -14,8 +15,9 @@
   // Description: Creates a new Zergling
   // Preconditions: None
   // Postconditions: Can create a Zergling
-  Zergling::Zergling(string, int){
-
+  Zergling::Zergling(string name, int hp):Zerg(name,hp){
+	// m_name = name;
+	// m_health = hp;
   }
 
 
@@ -24,5 +26,6 @@
   // Preconditions: None
   // Postconditions: Returns damage from special attack
   int Zergling::SpecialAttack(){
-	return 1;
+    cout <<GetName() << "scratches at you ferociously!" << endl;
+    return 1;
   }

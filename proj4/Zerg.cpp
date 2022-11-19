@@ -6,7 +6,7 @@
   // Description: Would be used to create a zerg but abstracted
   // Preconditions: None
   // Postconditions: Used to populate child class data
-  Zerg::Zerg(){
+  Zerg::Zerg():Entity(){
 
   }
 
@@ -15,8 +15,9 @@
   // Description: Would be used to create a Zerg but abstracted
   // Preconditions: None
   // Postconditions: Used to populate child class data
-  Zerg::Zerg(string, int){
-
+  Zerg::Zerg(string name, int hp):Entity(name, hp){
+	// m_name = name;
+	// m_health = hp;
   }
 
 
@@ -25,7 +26,8 @@
   // Preconditions: None
   // Postconditions: Returns damage
   int Zerg::Attack(){
-	return 1;
+    cout << GetName() << " deals 1 point of damage! " << endl;
+    return 1;
   }
 
 

@@ -6,15 +6,16 @@
   // Description: Creates a new Battlecruiser
   // Preconditions: None
   // Postconditions: Can create a Battlecruiser
-  Battlecruiser::Battlecruiser(){
-
+  Battlecruiser::Battlecruiser():Terran(){
+	
   }
   // Name: Battlecruiser(string name, int hp)
   // Description: Creates a new Battlecruiser
   // Preconditions: None
   // Postconditions: Can create a Battlecruiser
-   Battlecruiser::Battlecruiser(string, int){
-
+   Battlecruiser::Battlecruiser(string name, int hp):Terran(name, hp){
+	// m_name = name;
+	// m_health = hp;
    }
 
 
@@ -23,7 +24,7 @@
   // Preconditions: None
   // Postconditions: Everything dynamically allocated is deallocated
 	Battlecruiser::~Battlecruiser(){
-
+	
 	}
 
 
@@ -32,5 +33,8 @@
   // Preconditions: None
   // Postconditions: Returns damage from special attack
   int Battlecruiser::SpecialAttack(){
-	return 1;
+	  cout << GetName() << "uses the Yomato Cannon!" << endl;
+    int battlecruiserAttack = (rand() % (12 - 3 + 3)) + 3;
+    return battlecruiserAttack;
+	
   }

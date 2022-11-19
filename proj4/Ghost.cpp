@@ -1,14 +1,20 @@
+   /*Title: Ghost.cpp
+Author: Ping Zhang
+Date: 11/11/2022
+Description: This is ghost cpp files of UMBC Starcraft project
+*/
  
  #include "Ghost.h"
- 
+ #include <random>
  
  
  // Name: Ghost() - Default Constructor
   // Description: Creates a new Ghost
   // Preconditions: None
   // Postconditions: Can create a Ghost
-  Ghost::Ghost(){
-
+  Ghost::Ghost():Terran(){
+	// m_name = "Ghost";
+	// m_health = 10;
   }
 
 
@@ -16,8 +22,9 @@
   // Description: Creates a new Ghost
   // Preconditions: None
   // Postconditions: Can create a Ghost
-  Ghost::Ghost(string, int){
-
+  Ghost::Ghost(string name, int hp):Terran(name, hp){
+	// m_name = name;
+	// m_health = hp;
   }
 
 
@@ -35,5 +42,8 @@
   // Preconditions: None
   // Postconditions: Returns damage from special attack
   int Ghost::SpecialAttack(){
-	return 1;
+   
+    int ghostAttack = (rand() % (12 - 2 + 2)) + 2;
+    cout << GetName() << "performs a sneak attack!" << endl;
+    return ghostAttack;
   }
